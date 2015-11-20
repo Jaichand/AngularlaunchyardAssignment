@@ -1,0 +1,23 @@
+<html ng-app="app">
+  <head>
+    <title>Launch Yard Assignment</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="app.css"/>
+  </head>
+  <body ng-controller="launchyardController as lanCtrl">
+    <input id="search" type="text" ng-model="lanCtrl.search" placeholder="Enter name to search"/>
+    <form name="enter" ng-submit="lanCtrl.addEntry()" ng-if="(lanCtrl.list|filter:lanCtrl.search).length==0">
+      <input  id="search" type="text" placeholder="Enter designation " ng-model="lanCtrl.designation" required/>
+      <input type="submit" value="Add"/>
+    </form>
+    <div ng-repeat="item in lanCtrl.list|filter:lanCtrl.search|orderBy:'name'" id="box">
+      <div id="img"><img id="avatar" ng-src="{{item.avatar}}"></div>
+      <div id="contain">
+        <h3>{{item.name}}</h3>
+        <p>{{item.designation}}</p>
+        <div>
+        </div>
+      </body>
+    </html>
